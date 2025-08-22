@@ -21,12 +21,15 @@ export default function App() {
 
     try {
       setLoading(true);
-      const res = await fetch("https://dorponbackend.onrender.com/api/auth", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-        credentials: "include", // ✅ cookie/session পাঠানোর জন্য
-      });
+      const res = await fetch(
+        "https://dorponbackend.onrender.com/api/auth/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+          credentials: "include", // ✅ cookie/session পাঠানোর জন্য
+        }
+      );
 
       const data = await res.json();
 
