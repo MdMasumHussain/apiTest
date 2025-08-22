@@ -25,6 +25,7 @@ export default function App() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
+        credentials: "include", // ✅ cookie/session পাঠানোর জন্য
       });
 
       const data = await res.json();
@@ -33,7 +34,7 @@ export default function App() {
         setMessage("✅ Login successful!");
         console.log("Response:", data);
 
-        // 👉 চাইলে token localStorage এ রাখতে পারো
+        // 👉 যদি backend JWT পাঠায়, token localStorage এ রাখতে পারো
         // localStorage.setItem("token", data.token);
       } else {
         setMessage(data.message || "❌ Login failed");
@@ -105,6 +106,7 @@ export default function App() {
     </div>
   );
 }
+
 
 
 // function App() {
